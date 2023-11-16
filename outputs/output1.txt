@@ -1,0 +1,35 @@
+            Punto 01
+
+Colonia 1 a colonia 2: 16
+Colonia 1 a colonia 3: 34
+Colonia 1 a colonia 4: 32
+
+
+Colonia 2 a colonia 1: 16
+Colonia 2 a colonia 3: 18
+Colonia 2 a colonia 4: 21
+
+
+Colonia 3 a colonia 1: 34
+Colonia 3 a colonia 2: 18
+Colonia 3 a colonia 4: 7
+
+
+Colonia 4 a colonia 1: 32
+Colonia 4 a colonia 2: 21
+Colonia 4 a colonia 3: 7
+
+
+            Punto 02
+
+El recorrido:
+1 -> 2 -> 4 -> 3 -> 1
+El costo: 89
+
+            Punto 03
+
+Flujo máximo: 78
+
+            Punto 04
+
+La central más cercana a [325, 200] es [300, 100] con una distancia de 103.078.

@@ -1,0 +1,57 @@
+            Punto 01
+
+Colonia 1 a colonia 2: 2
+Colonia 1 a colonia 3: 3
+Colonia 1 a colonia 4: 7
+Colonia 1 a colonia 5: 3
+Colonia 1 a colonia 6: 5
+
+
+Colonia 2 a colonia 1: 2
+Colonia 2 a colonia 3: 3
+Colonia 2 a colonia 4: 5
+Colonia 2 a colonia 5: 1
+Colonia 2 a colonia 6: 4
+
+
+Colonia 3 a colonia 1: 1
+Colonia 3 a colonia 2: 2
+Colonia 3 a colonia 4: 4
+Colonia 3 a colonia 5: 3
+Colonia 3 a colonia 6: 5
+
+
+Colonia 4 a colonia 1: 2
+Colonia 4 a colonia 2: 2
+Colonia 4 a colonia 3: 2
+Colonia 4 a colonia 5: 2
+Colonia 4 a colonia 6: 1
+
+
+Colonia 5 a colonia 1: 1
+Colonia 5 a colonia 2: 2
+Colonia 5 a colonia 3: 3
+Colonia 5 a colonia 4: 4
+Colonia 5 a colonia 6: 5
+
+
+Colonia 6 a colonia 1: 2
+Colonia 6 a colonia 2: 3
+Colonia 6 a colonia 3: 1
+Colonia 6 a colonia 4: 3
+Colonia 6 a colonia 5: 1
+
+
+            Punto 02
+
+El recorrido:
+1 -> 2 -> 5 -> 3 -> 4 -> 6 -> 1
+El costo: 16
+
+            Punto 03
+
+Flujo máximo: 19
+
+            Punto 04
+
+La central más cercana a [700, 400] es [690, 420] con una distancia de 22.3607.

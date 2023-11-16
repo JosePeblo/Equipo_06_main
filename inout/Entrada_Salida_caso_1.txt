@@ -1,0 +1,53 @@
+Número de nodos: 4
+
+Kms de colonia a colonia
+
+0 16 45 32
+16 0 18 21
+45 18 0 7
+32 21 7 0
+
+Salida: 
+Km de colonia A a colonia B: 16
+Km de colonia A a colonia C: 34
+Km de colonia A a colonia D: 32
+
+Km de colonia B a colonia A: 16
+Km de colonia B a colonia C: 18
+Km de colonia B a colonia D: 21
+
+Km de colonia C a colonia A: 34
+Km de colonia C a colonia B: 18
+Km de colonia C a colonia D: 7
+
+Km de colonia D a colonia A: 32
+Km de colonia D a colonia B: 21
+Km de colonia D a colonia C: 7
+
+Camino más corto: A--->B--->D--->C--->A
+
+Capacidades máximas de transmisión
+
+Entrada:
+0 48 12 18
+52 0 42 32
+18 46 0 56
+24 36 52 0
+
+Salida: 
+Flujo máximo: 78
+
+Coordenadas de las centrales
+
+Entrada:
+200 500
+300 100
+450 150
+520 480
+
+Coordenadas de punto de contratación
+Entrada:
+325 200
+
+Salida: 
+Distancia mínima: 103km
