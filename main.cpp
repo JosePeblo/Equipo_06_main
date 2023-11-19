@@ -190,9 +190,7 @@ int fordFulkerson(i32Mat graph, int s, int t) {
 
 
     int parent[graph.Rows()];  // Este array es llenado por BFS y se utiliza para almacenar el camino
-
     int max_flow = 0;  // Flujo máximo empezando en 0
-
     //  Aumentar el flujo mientras haya camino desde la fuente hasta el sumidero
     while (bfs(rGraph, s, t, parent)) {
         int path_flow = INT_MAX;
@@ -207,11 +205,9 @@ int fordFulkerson(i32Mat graph, int s, int t) {
             rGraph[u][v] -= path_flow;
             rGraph[v][u] += path_flow;
         }
-
         // Agregar el flujo del camino al flujo total
         max_flow += path_flow;
     }
-
     // Regresa el flujo máximo 
     return max_flow;
 }
@@ -249,14 +245,6 @@ int main(void) {
     std::string str;
     std::cin >> str;
     stringToPair(str, newCentral);
-
-    for(auto& cent : centrals) {
-        std::cout << cent.first << ", " << cent.second << std::endl;
-    }
-    std::cout << std::endl;
-    std::cout << newCentral.first << ", " << newCentral.second << std::endl;
-
-
 
     // 1.- Forma óptima de cablear la fibra óptica conenctando colonias
     // para que se pueda compartir la infotmación cualesquiera dos colonias
