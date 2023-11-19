@@ -5,6 +5,7 @@
 #include <limits>
 #include <set>
 #include <stdexcept>
+#include <queue>
 #include "cmlmatrix.h"
 const int INF = std::numeric_limits<int>::max();
 
@@ -145,6 +146,77 @@ void EuclideanDistance(const std::vector<i32Pair>& centrals, const i32Pair& newC
               << "] con una distancia de " << shortestDistance << "." << std::endl;
 }
 
+bool bfs(i32Mat rGraph, int s, int t, int parent[]) {
+    // Crear un arregli para saber que nodos se han visitado y se inician como no visitados
+    bool visited[rGraph.Rows()];
+    memset(visited, 0, sizeof(visited));
+
+    std::queue<int> q;
+    q.push(s);
+    visited[s] = true;
+    parent[s] = -1;
+
+    // Para usar el algoritmo de FordFulkerson usaremos BFS
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        for (int v = 0; v < rGraph.Rows(); v++) {
+            if (visited[v] == false && rGraph[u][v] > 0) {
+                if (v == t) {
+                    parent[v] = u;
+                    return true;
+                }
+                q.push(v);
+                parent[v] = u;
+                visited[v] = true;
+            }
+        }
+    }
+    return false;
+}
+
+// Retorna el flujo máximo de s a t en el grafo dado
+// Algoritmo de FordFulkerson
+int fordFulkerson(i32Mat graph, int s, int t) {
+    int u, v;
+
+    // Crear una copia del gráfico residual
+    i32Mat rGraph(graph.Rows(), graph.Cols()); // Gráfico residual donde rGraph[i][j] indica
+                      // la capacidad residual de la arista de i a j (si existe
+                      // una arista)
+    for (u = 0; u < graph.Rows(); u++)
+        for (v = 0; v < graph.Rows(); v++)
+             rGraph[u][v] = graph[u][v];
+
+
+    int parent[graph.Rows()];  // Este array es llenado por BFS y se utiliza para almacenar el camino
+
+    int max_flow = 0;  // Flujo máximo empezando en 0
+
+    //  Aumentar el flujo mientras haya camino desde la fuente hasta el sumidero
+    while (bfs(rGraph, s, t, parent)) {
+        int path_flow = INT_MAX;
+        for (v = t; v != s; v = parent[v]) {
+            u = parent[v];
+            path_flow = std::min(path_flow, rGraph[u][v]);
+        }
+
+        // Actualizar las capacidades residuales de las aristas y las aristas invertidas
+        for (v = t; v != s; v = parent[v]) {
+            u = parent[v];
+            rGraph[u][v] -= path_flow;
+            rGraph[v][u] += path_flow;
+        }
+
+        // Agregar el flujo del camino al flujo total
+        max_flow += path_flow;
+    }
+
+    // Regresa el flujo máximo 
+    return max_flow;
+}
+
+
 int main(void) {
     int numNodes;
     std::cin >> numNodes;
@@ -201,12 +273,9 @@ int main(void) {
 
     // 3.- Flujo máximo de información del nodo inicial al nodo final.
     std::cout << "Punto 03" << std::endl;
-    int source = 0, skin = numNodes - 1;
-    std::cout << "Flujo máximo: " << max_flow << std::endl;
+    int source = 0, sink = numNodes - 1;
+    std::cout << "Flujo máximo: " << fordFulkerson(flux, source, sink) << std::endl;
     
-
-
-
     // 4.- Distancia más corta entre las centrales existentes y la nueva central
     EuclideanDistance(centrals, newCentral);
 
