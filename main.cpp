@@ -11,6 +11,7 @@ const int INF = std::numeric_limits<int>::max();
 typedef cml::matrix<int> i32Mat;
 typedef std::vector<int> i32Vec;
 typedef std::set<int>    i32Set;
+typedef std::pair<int,int> i32Pair;
 
 struct Path {
     i32Vec path;
@@ -127,6 +128,23 @@ void dijkstra(cml::matrix<int>& matrix, int originNode, int numNode){
     }
 }
 
+void EuclideanDistance(const std::vector<i32Pair>& centrals, const i32Pair& newCentral) {
+    int centralIndex = -1;
+    float shortestDistance = MAXFLOAT;
+    for(int i = 0; i < centrals.size(); i++) {
+        int x = newCentral.first - centrals[i].first;
+        int y = newCentral.second - centrals[i].second;
+        float dist = sqrt((float)(x*x + y*y));
+        if(dist <  shortestDistance) {
+            shortestDistance = dist;
+            centralIndex = i;
+        }
+    }
+    std::cout << "La central más cercana a [" << newCentral.first << ", " << newCentral.second 
+              << "] es [" << centrals[centralIndex].first << ", " << centrals[centralIndex].second 
+              << "] con una distancia de " << shortestDistance << "." << std::endl;
+}
+
 int main(void) {
     int numNodes;
     std::cin >> numNodes;
@@ -147,7 +165,7 @@ int main(void) {
 
     std::vector<std::pair<int, int>> centrals(numNodes);
 
-    std::pair<int, int> home;
+    std::pair<int, int> newCentral;
 
     for(int i = 0; i < numNodes; i++) {
         std::string str;
@@ -158,9 +176,15 @@ int main(void) {
 
     std::string str;
     std::cin >> str;
-    stringToPair(str, home);
+    stringToPair(str, newCentral);
 
-    // Aquí empezamos 
+    for(auto& cent : centrals) {
+        std::cout << cent.first << ", " << cent.second << std::endl;
+    }
+    std::cout << std::endl;
+    std::cout << newCentral.first << ", " << newCentral.second << std::endl;
+
+
 
     // 1.- Forma óptima de cablear la fibra óptica conenctando colonias
     // para que se pueda compartir la infotmación cualesquiera dos colonias
@@ -170,15 +194,15 @@ int main(void) {
         std::cout<<"\n";
     }
 
-    // Borren esto, ocupen la mtríz de adyacencia "colonies[i][j]" y así 
-
     // 2.- Ruta más corta posible para visitar cada colonia una sola vez
     std::cout << "Punto 02" << std::endl;
     TSP(colonies);
+    std::cout << std::endl;
 
     // 3.- 
 
-
+    // 4.- Distancia más corta entre las centrales existentes y la nueva central
+    EuclideanDistance(centrals, newCentral);
 
     return 0;
 }
