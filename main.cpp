@@ -51,7 +51,7 @@ Path ClosestNeigbour(i32Mat& graph, i32Set nodes, int start) {
 
 }
 
-void TSP(cml::matrix<int>& graph) {
+void TSP(i32Mat& graph) {
     int numNodes = graph.Rows();
     std::vector<Path> paths;
     paths.reserve(numNodes);
