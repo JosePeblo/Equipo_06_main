@@ -199,7 +199,13 @@ int main(void) {
     TSP(colonies);
     std::cout << std::endl;
 
-    // 3.- 
+    // 3.- Flujo máximo de información del nodo inicial al nodo final.
+    std::cout << "Punto 03" << std::endl;
+    int source = 0, skin = numNodes - 1;
+    std::cout << "Flujo máximo: " << max_flow << std::endl;
+    
+
+
 
     // 4.- Distancia más corta entre las centrales existentes y la nueva central
     EuclideanDistance(centrals, newCentral);
